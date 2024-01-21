@@ -2,32 +2,181 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body{
+  display: flex;
+  height: 98vh;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+#piso{
+
+  display: flex;
+  position: relative;
+  width: 100vw;
+  height: 750px;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #b83564, #ff6a5a, #ffb350,#b998b3, #83b8aa) no-repeat;
+  background-size: 300% 300%;
+  animation: backgroundAnimation 10s ease alternate infinite;
+  border-bottom: 10px solid rgb(12, 77, 12);
+}
+
+.clouds{
+  position: absolute;
+  width: 250px;
+  animation: clouds-animation 2s infinite linear;
+  right: -250px;
+}
+
+.cloud1 {
+  top: 60px;
+
+}
+.cloud2 {
+  top: 50px;
+  animation-delay: 0.5s;
+}
+
+.star1{
+  position: absolute;
+  top: 25px;
+  right: -80px;
+  width: 80px;
+  height: 80px;
+  animation: star-rotate 2s infinite linear, clouds-animation s infinite linear;
+  animation-delay: 0.7s;
+  z-index: 2;
+}
+
+.star2{
+  position: absolute;
+  top: 150px;
+  right: -80px;
+  width: 80px;
+  height: 80px;
+  animation: star-rotate 1s infinite linear, clouds-animation 2.5s infinite linear;
+  animation-delay: 1s;
+  z-index: 2;
+}
+
+.star3{
+  position: absolute;
+  top: 90px;
+  right: -80px;
+  width: 80px;
+  height: 80px;
+  animation: star-rotate 0.7s infinite linear, clouds-animation 1.7s infinite linear;
+  animation-delay: 1s;
+  z-index: 2;
+}
+
+.star4{
+  position: absolute;
+  top: 125px;
+  right: -80px;
+  width: 80px;
+  height: 80px;
+  animation: star-rotate 0.5s infinite linear, clouds-animation 1s infinite linear;
+  animation-delay: 1s;
+  z-index: 2;
+}
+
+.cloud3 {
+  top: 75px;
+  animation-delay: 1s;
+}
+
+.cloud4 {
+  top: 45px;
+  animation-delay: 1.5s;
+}
+
+.cloud5{
+  top: 25px;
+  animation-delay: 2s;
+}
+
+#person {
+  position: absolute;
+  bottom: 0;
+}
+
+
+.villain {
+  position: absolute;
+  height: 80px;
+  right: -180px; 
+  
+  bottom: 0;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  animation: villains-animation 2s infinite linear; 
+}
+
+.jump {
+  animation: jump 700ms ease-out;
+}
+
+.delayOneSec {
+  animation-delay: 1s;
+
+}
+@keyframes villains-animation {
+  from {
+    right: -180;
+  }
+  to{
+    right: 100%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes jump {
+  0%{
+    bottom: 0;
+  }
+  40%{
+    bottom: 180px;
+  }
+  50%{
+    bottom: 180px;
+  }
+  60%{
+    bottom: 180px;
+  }
+  100%{
+    bottom: 0;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes clouds-animation {
+  from {
+    right: -250;
+  }
+  to{
+    right: 100%;
+  }
+}
+
+@keyframes star-rotate {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-180deg);
+  }
+  100%{
+    transform: rotate(-360deg);
   }
 }
