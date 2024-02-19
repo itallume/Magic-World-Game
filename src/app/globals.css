@@ -7,17 +7,18 @@ body{
   height: 98vh;
 }
 
-#piso{
+#gameBoard{
 
   display: flex;
   position: relative;
   width: 100vw;
   height: 750px;
   overflow: hidden;
-  background: linear-gradient(-45deg, #b83564, #ff6a5a, #ffb350,#b998b3, #83b8aa) no-repeat;
+  /* background: linear-gradient(-45deg, #b83564, #ff6a5a, #ffb350,#b998b3, #83b8aa) no-repeat; */
+  background: linear-gradient(-45deg, #db3026, #e88a25, #f9e14b,#efed89, #7abf66) no-repeat;
   background-size: 300% 300%;
   animation: backgroundAnimation 10s ease alternate infinite;
-  border-bottom: 10px solid rgb(12, 77, 12);
+  border-bottom: 10px solid rgb(35, 117, 35);
 }
 
 .clouds{
@@ -25,6 +26,7 @@ body{
   width: 250px;
   animation: clouds-animation 2s infinite linear;
   right: -250px;
+  z-index: 1;
 }
 
 .cloud1 {
@@ -42,7 +44,7 @@ body{
   right: -80px;
   width: 80px;
   height: 80px;
-  animation: star-rotate 2s infinite linear, clouds-animation s infinite linear;
+  animation: star-rotate 2s infinite linear, clouds-animation 3s infinite linear;
   animation-delay: 0.7s;
   z-index: 2;
 }
