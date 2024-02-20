@@ -13,14 +13,15 @@ export default function Modal({children, buttonAction, buttonText}){
     
     const MODAL_STYLE = {
         position: "fixed",
-        top: "50%",
-        left: "50%",
+        top: "25%",
+        left: "25%",
         transform: "translate(-50%, -50%)",
         width: "50%",
         height: "60%",
         backgroundColor: "#fff",
         borderRadius: "10px",
-        color: "black"
+        color: "black",
+        animation: "modalAnimation 1s ease-in-out forwards"
     }
 
     const BUTTON_STYLE = {
