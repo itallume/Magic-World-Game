@@ -25,31 +25,33 @@ export default function Home() {
   }
 
   const startAnimationGame = () => {
-    if (largatinRef.current.classList.contains("villainAnimation")){
-      largatinRef.current.classList.remove("villainAnimation")
-      peixinRef.current.classList.remove("villainAnimation")
-    }
     largatinRef.current.classList.add("villainAnimation")
     peixinRef.current.classList.add("villainAnimation")
+    personRef.current.style.bottom = "0px"
+    largatinRef.current.style.left = ""
+    peixinRef.current.style.left = ""
   }
 
   const stopAnimation = (largatinPosition, peixinPosition, personPosition) => {
-    personRef.current.style.animation = "none"
-    largatinRef.current.style.animation = "none"
-    peixinRef.current.style.animation = "none"
+    largatinRef.current.classList.remove("villainAnimation")
+    peixinRef.current.classList.remove("villainAnimation")
+    personRef.current.style.bottom = `${personPosition}px`
     largatinRef.current.style.left = `${largatinPosition}px`
     peixinRef.current.style.left = `${peixinPosition}px`
-    personRef.current.style.bottom = `${personPosition}px`
+    
   }
 
   const firstStart = () => {
     setIntroductionMensage(!introductionMensage)
-    setStartGame(!StartGame)
+    setStartGame((prevState) => !prevState)
   }
 
   const restartGame = () => {
-    setStartGame(!StartGame)
-    setLoose(!loose)
+    
+    setStartGame((prevState) => !prevState)
+    setLoose((prevState) => !prevState)
+    setScore(0)
+    
   }
 
   useEffect (() => {
@@ -64,40 +66,40 @@ export default function Home() {
       if (((largatinPosition <= 150 && largatinPosition > 0) || (peixinPosition <= 150 && peixinPosition > 0)) && personPosition <= 75){
         stopAnimation(largatinPosition, peixinPosition, personPosition)
         localGameRunning = false
+        setStartGame((prevState) => !prevState)
         looseState()
         return
       }
 
-      console.log("largatin: " + largatinPosition +", pexin: " + peixinPosition)
       if ((largatinPosition < 0 && (lastScorer == null || lastScorer !== "largatin")) && localGameRunning == true) {
 
         incrementScore()
         lastScorer = "largatin"
-        console.log("largato + 1")
 
       }else if ((peixinPosition < 0 && lastScorer !== "peixin") && localGameRunning == true) {
         incrementScore()
         lastScorer = "peixin"
-        console.log("peixin + 1")
+
       }
-      console.log(lastScorer)
+      
       if (localGameRunning){
         setTimeout(gamingLoop, 50)
       }else{
         return
       }}
-
+      console.log("entrei no useEffect: " + StartGame)
       if (StartGame) {
+        localGameRunning = true
         startAnimationGame()
         gamingLoop();
       }
   }, [StartGame])
 
-  
+  console.log("startGame: " + StartGame)
 
   useEffect(() => {
     
-
+    
   }, [])
 
   useEffect(() =>{

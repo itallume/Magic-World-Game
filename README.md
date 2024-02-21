@@ -18,9 +18,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 lista problemas para serem resolvidos:
 
-[ ] zerar o score quando for reiniciar o jogo 
+[X] zerar o score quando for reiniciar o jogo 
 
-[ ] reiniciar o jogo
+[X] reiniciar o jogo
+
+[ ] Estilizar o Modal
 
 [ ] painel mostrando o score atualizado a cada ponto
 
