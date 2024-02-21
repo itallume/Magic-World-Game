@@ -33,3 +33,4 @@ lista problemas para serem resolvidos:
 [ ] guardar o score como foco de um ranking
 
 [ ] ranking indiviual e online 
+.
