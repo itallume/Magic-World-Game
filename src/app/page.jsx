@@ -25,16 +25,22 @@ export default function Home() {
   }
 
   const startAnimationGame = () => {
-    largatinRef.current.classList.add("villainAnimation")
-    peixinRef.current.classList.add("villainAnimation")
+    // largatinRef.current.classList.add("villainAnimation")
+    // peixinRef.current.classList.add("villainAnimation")
+    personRef.current.style.animation = ""
+    largatinRef.current.style.animation = "villains-animation 2s infinite linear"
+    peixinRef.current.style.animation = "villains-animation 2s 1s infinite linear"
     personRef.current.style.bottom = "0px"
     largatinRef.current.style.left = ""
     peixinRef.current.style.left = ""
   }
 
   const stopAnimation = (largatinPosition, peixinPosition, personPosition) => {
-    largatinRef.current.classList.remove("villainAnimation")
-    peixinRef.current.classList.remove("villainAnimation")
+    personRef.current.style.animation = "none"
+    largatinRef.current.style.animation = "none"
+    peixinRef.current.style.animation = "none"
+    // largatinRef.current.classList.remove("villainAnimation")
+    // peixinRef.current.classList.remove("villainAnimation")
     personRef.current.style.bottom = `${personPosition}px`
     largatinRef.current.style.left = `${largatinPosition}px`
     peixinRef.current.style.left = `${peixinPosition}px`
@@ -95,12 +101,13 @@ export default function Home() {
       }
   }, [StartGame])
 
-  console.log("startGame: " + StartGame)
-
-  useEffect(() => {
+  // useEffect(() => {
+  //   if (score % 10 == 0 && score != 0){
+  //     largatinRef.current.style.animation = "villains-animation 1.5s infinite linear"
+  //     peixinRef.current.style.animation = "villains-animation 1.5s 0.75s infinite linear"
+  //   }
     
-    
-  }, [])
+  // }, [score])
 
   useEffect(() =>{
     window.addEventListener('keydown', jump)
@@ -162,7 +169,8 @@ export default function Home() {
             width={180}
             ref={peixinRef}
           />
-        <h1>Seu Score: {score}</h1>
+
+        <div className="scorePanel">{score}</div>
       </div>
       
     </ > 

@@ -22,9 +22,9 @@ lista problemas para serem resolvidos:
 
 [X] reiniciar o jogo
 
-[ ] Estilizar o Modal
+[X] painel mostrando o score atualizado a cada ponto
 
-[ ] painel mostrando o score atualizado a cada ponto
+[ ] Estilizar o Modal
 
 [ ] toquezinho para pontuação 
 
@@ -33,4 +33,3 @@ lista problemas para serem resolvidos:
 [ ] guardar o score como foco de um ranking
 
 [ ] ranking indiviual e online 
-.

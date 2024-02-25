@@ -4,15 +4,13 @@
 
 body{
   display: flex;
-  height: 98vh;
+  height: 100vh;
 }
 
 #gameBoard{
-
-  display: flex;
   position: relative;
   width: 100vw;
-  height: 750px;
+  height: 100vh;
   overflow: hidden;
   /* background: linear-gradient(-45deg, #b83564, #ff6a5a, #ffb350,#b998b3, #83b8aa) no-repeat; */
   background: linear-gradient(-45deg, #db3026, #e88a25, #f9e14b,#efed89, #7abf66) no-repeat;
@@ -114,18 +112,25 @@ body{
   backface-visibility: hidden;
 }
 
-.villainAnimation {
-  animation: villains-animation 2s infinite linear;
-}
-
 .jump {
   animation: jump 700ms ease-out;
 }
 
-.delayOneSec {
-  animation-delay: 1s;
+.scorePanel{
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+  padding: 1rem 2rem 1rem 2rem;
+  border-radius: 20px;
+  border: 2px solid black;
+  font-size: 3rem;
+  background-color: white;
+  color: black;
 
 }
+
 @keyframes villains-animation {
   from {
     right: -180;
@@ -194,5 +199,14 @@ body{
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes emerge {
+  from {
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
   }
 }
