@@ -131,6 +131,14 @@ body{
 
 }
 
+h1{
+  font-size: 2rem;
+}
+
+p{
+  font-size: 1.5rem;
+}
+
 @keyframes villains-animation {
   from {
     right: -180;

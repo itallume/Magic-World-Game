@@ -6,6 +6,7 @@ import peixin from "../../public/peixin.gif"
 import Sky from "@/components/Sky"
 import { useEffect, useRef, useState } from "react";
 import Modal from "@/components/Modal";
+// import incrementScoreSound from "../../public/incrementScoreSound.mp3";
 
 export default function Home() {
   const personRef = useRef()
@@ -15,6 +16,7 @@ export default function Home() {
   const [score, setScore] = useState(0)
   const [StartGame, setStartGame] = useState(false)
   const [introductionMensage, setIntroductionMensage] = useState(true)
+  // const scoreSound = new Audio(incrementScoreSound)
 
   const looseState = () => {
     setLoose((prevState) => !prevState)
@@ -78,11 +80,12 @@ export default function Home() {
       }
 
       if ((largatinPosition < 0 && (lastScorer == null || lastScorer !== "largatin")) && localGameRunning == true) {
-
+        // scoreSound.play()
         incrementScore()
         lastScorer = "largatin"
 
       }else if ((peixinPosition < 0 && lastScorer !== "peixin") && localGameRunning == true) {
+        // scoreSound.play()
         incrementScore()
         lastScorer = "peixin"
 
@@ -101,13 +104,18 @@ export default function Home() {
       }
   }, [StartGame])
 
-  // useEffect(() => {
-  //   if (score % 10 == 0 && score != 0){
-  //     largatinRef.current.style.animation = "villains-animation 1.5s infinite linear"
-  //     peixinRef.current.style.animation = "villains-animation 1.5s 0.75s infinite linear"
-  //   }
-    
-  // }, [score])
+  //  useEffect(() => {
+  //   console.log((largatinRef.current.offsetLeft == window.screen.width || peixinRef.current.offsetLeft == window.screen.width))
+
+  //    if (score % 10 == 0 && score != 0){
+  //     setTimeout(function() {
+  //       largatinRef.current.style.animation = "villains-animation 1.5s infinite linear"
+  //       peixinRef.current.style.animation = "villains-animation 1.5s 0.75s infinite linear"
+  //   }, 500)
+      
+  //    }
+
+  //  }, [score])
 
   useEffect(() =>{
     window.addEventListener('keydown', jump)
@@ -135,12 +143,17 @@ export default function Home() {
 
       <div id="gameBoard">
          {introductionMensage && <Modal buttonAction={() => firstStart()} buttonText={"Jogar"}>
-            <h1>Vamos Jogar</h1>
+            <h1>Bem-vindo ao Magic World!</h1>
+            <p>O jogo é simples, virá monstrinhos rapidos e raivosos na sua direção, 
+              basta pular (usando a tecla "Espaço") para se livrar deles (ou não, eles costumam ser insistentes). 
+              O jogo acaba quando você esbarrar em um deles. Tome cuidado, eles ficam mais rapidos com tempo. Boa sorte!</p>
           
           </Modal>}
 
           {loose && <Modal buttonAction={() => restartGame()} buttonText={"Jogar Novamente"}>
-            <h1>loose, você pontuou: {score} pontos</h1>
+            
+            <h1>Pontuação final: {score} </h1>
+            <p>Você consegue mais! Tente novamente e mostre a eles o quanto melhorou!</p>
           </Modal>}
           
         <Sky/>
@@ -148,7 +161,7 @@ export default function Home() {
         <Image
               id="person"
               src={person}
-              alt="Next.js Logo"
+              alt="person"
               width={180}
               ref={personRef}
               className=""
@@ -157,20 +170,20 @@ export default function Home() {
          <Image
           className="villain"
           src={largatin}
-          alt="Next.js Logo"
+          alt="largatin"
           width={180}
           ref={largatinRef}
         />
 
         <Image
-            className="villain delayOneSec"
+            className="villain"
             src={peixin}
-            alt="Next.js Logo"
+            alt="peixin"
             width={180}
             ref={peixinRef}
           />
-
-        <div className="scorePanel">{score}</div>
+        {StartGame && <div className="scorePanel">{score}</div>}
+        
       </div>
       
     </ > 
