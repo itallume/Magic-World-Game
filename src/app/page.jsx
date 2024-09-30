@@ -6,7 +6,7 @@ import peixin from "../../public/peixin.gif"
 import Sky from "@/components/Sky"
 import { useEffect, useRef, useState } from "react";
 import Modal from "@/components/Modal";
-// import incrementScoreSound from "../../public/incrementScoreSound.mp3";
+
 
 export default function Home() {
   const personRef = useRef()
@@ -16,7 +16,8 @@ export default function Home() {
   const [score, setScore] = useState(0)
   const [StartGame, setStartGame] = useState(false)
   const [introductionMensage, setIntroductionMensage] = useState(true)
-  // const scoreSound = new Audio(incrementScoreSound)
+  const audioIncrementScore = useRef(null)
+  const audioGameOver = useRef(null)
 
   const looseState = () => {
     setLoose((prevState) => !prevState)
@@ -50,9 +51,24 @@ export default function Home() {
   }
 
   const firstStart = () => {
+    audioIncrementScore.current = new Audio("/incrementScoreSound.mp3")
+    audioGameOver.current = new Audio("/gameOverSound.mp3")
     setIntroductionMensage(!introductionMensage)
     setStartGame((prevState) => !prevState)
   }
+
+  const playIncrementScore = () => {
+    if (audioIncrementScore.current != null){
+      audioIncrementScore.current.play()
+    }
+  }
+
+  const playlooseSound = () => {
+    if (audioGameOver.current != null){
+      audioGameOver.current.play()
+    }
+  }
+
 
   const restartGame = () => {
     
@@ -76,17 +92,18 @@ export default function Home() {
         localGameRunning = false
         setStartGame((prevState) => !prevState)
         looseState()
+        playlooseSound()
         return
       }
 
       if ((largatinPosition < 0 && (lastScorer == null || lastScorer !== "largatin")) && localGameRunning == true) {
-        // scoreSound.play()
         incrementScore()
+        playIncrementScore()
         lastScorer = "largatin"
 
       }else if ((peixinPosition < 0 && lastScorer !== "peixin") && localGameRunning == true) {
-        // scoreSound.play()
         incrementScore()
+        playIncrementScore()
         lastScorer = "peixin"
 
       }
@@ -96,7 +113,6 @@ export default function Home() {
       }else{
         return
       }}
-      console.log("entrei no useEffect: " + StartGame)
       if (StartGame) {
         localGameRunning = true
         startAnimationGame()
@@ -104,19 +120,7 @@ export default function Home() {
       }
   }, [StartGame])
 
-  //  useEffect(() => {
-  //   console.log((largatinRef.current.offsetLeft == window.screen.width || peixinRef.current.offsetLeft == window.screen.width))
-
-  //    if (score % 10 == 0 && score != 0){
-  //     setTimeout(function() {
-  //       largatinRef.current.style.animation = "villains-animation 1.5s infinite linear"
-  //       peixinRef.current.style.animation = "villains-animation 1.5s 0.75s infinite linear"
-  //   }, 500)
-      
-  //    }
-
-  //  }, [score])
-
+  
   useEffect(() =>{
     window.addEventListener('keydown', jump)
 

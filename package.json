@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "box2d.js": "^1.0.4",
-    "next": "14.1.0",
+    "css-loader": "^7.1.2",
+    "next": "^14.2.13",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "style-loader": "^4.0.0",
+    "url-loader": "^4.1.1",
+    "use-sound": "^4.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

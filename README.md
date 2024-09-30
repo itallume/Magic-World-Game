@@ -24,12 +24,17 @@ lista problemas para serem resolvidos:
 
 [X] painel mostrando o score atualizado a cada ponto
 
-[ ] Estilizar o Modal
+[X] Estilizar o Modal
 
-[ ] toquezinho para pontuação 
+[X] toquezinho para pontuação 
 
+[ ] botão para tirar o som
+
+[ ] 
 ## Metas futuras
 
 [ ] guardar o score como foco de um ranking
 
 [ ] ranking indiviual e online 
+
+[ ] aumentar a velociadade dos bichinhos 
