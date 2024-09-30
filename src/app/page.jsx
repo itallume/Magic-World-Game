@@ -51,8 +51,8 @@ export default function Home() {
   }
 
   const firstStart = () => {
-    audioIncrementScore.current = new Audio("/incrementScoreSound.mp3")
-    audioGameOver.current = new Audio("/gameOverSound.mp3")
+    audioIncrementScore.current = new Audio("./incrementScoreSound.mp3")
+    audioGameOver.current = new Audio("./gameOverSound.mp3")
     setIntroductionMensage(!introductionMensage)
     setStartGame((prevState) => !prevState)
   }
