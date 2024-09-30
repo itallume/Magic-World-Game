@@ -39,9 +39,9 @@ export default function Home() {
   }
 
   const stopAnimation = (largatinPosition, peixinPosition, personPosition) => {
-    personRef.current.style.animation = "none"
-    largatinRef.current.style.animation = "none"
-    peixinRef.current.style.animation = "none"
+    personRef.current.style.animation = 'none'
+    largatinRef.current.style.animation = 'none'
+    peixinRef.current.style.animation = 'none'
     // largatinRef.current.classList.remove("villainAnimation")
     // peixinRef.current.classList.remove("villainAnimation")
     personRef.current.style.bottom = `${personPosition}px`
@@ -149,7 +149,7 @@ export default function Home() {
          {introductionMensage && <Modal buttonAction={() => firstStart()} buttonText={"Jogar"}>
             <h1>Bem-vindo ao Magic World!</h1>
             <p>O jogo é simples, virá monstrinhos rapidos e raivosos na sua direção, 
-              basta pular (usando a tecla "Espaço") para se livrar deles (ou não, eles costumam ser insistentes). 
+              basta pular (usando a tecla `&quot;`Espaço`&quot;`) para se livrar deles (ou não, eles costumam ser insistentes). 
               O jogo acaba quando você esbarrar em um deles. Tome cuidado, eles ficam mais rapidos com tempo. Boa sorte!</p>
           
           </Modal>}
